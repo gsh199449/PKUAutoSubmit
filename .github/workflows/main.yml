@@ -33,3 +33,11 @@ jobs:
       - run: |
           pip install selenium
           python main.py -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }}
+      
+      - uses: actions/checkout@v2 # required to clone your code
+      - name: pushover-actions
+        uses: clivern/pushover-actions@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUSHOVER_TOKEN: ${{ secrets.PUSHOVER_TOKEN }}
+          PUSHOVER_USER: ${{ secrets.PUSHOVER_USER }}
